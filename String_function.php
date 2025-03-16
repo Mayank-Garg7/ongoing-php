@@ -11,4 +11,7 @@ print "<br>";
 echo strpos($name, " is");
 print "<br>";
 echo str_replace("string", "sequence of characters", $name);
+print "<br>";
+echo str_repeat($name, 4);
+
 ?>
