@@ -15,4 +15,6 @@ print "<br>";
 echo str_repeat($name, 4);
 print "<br>";
 echo ltrim("    this text is trimmed from left side");
+print "<br>";
+echo rtrim("this text is trimmed from right side    ");
 ?>
