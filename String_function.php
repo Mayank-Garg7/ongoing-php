@@ -13,4 +13,6 @@ print "<br>";
 echo str_replace("string", "sequence of characters", $name);
 print "<br>";
 echo str_repeat($name, 4);
+print "<br>";
+echo ltrim("    this text is trimmed from left side");
 ?>
