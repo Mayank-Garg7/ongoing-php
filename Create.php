@@ -16,13 +16,8 @@ else{
 }
 
 
-
-// creat a Database
 $sql = "CREATE DATABASE mayankDb";    
 $result = MySQLi_query($conn, $sql);
-// echo var_dump($result);
-
-// Check for the Database creation successful or not
 if($result){
     echo "The db was created successfully";
 }
