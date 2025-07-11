@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding set to UTF-8 to support all characters -->
+    <meta charset="UTF-8">
+    
+    <!-- Makes the page responsive on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title of the webpage shown in the browser tab -->
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Table with border, spacing between cells (cellspacing), and padding inside cells (cellpadding) -->
+    <table border="2" cellspacing="12" cellpadding="14">
+        
+        <!-- colgroup is used to apply styles to specific columns -->
+        <colgroup>
+            <!-- First column has a red background -->
+            <col span="1" style="background-color:red">
+            
+            <!-- Second column has a yellow background -->
+            <col span="1" style="background-color:yellow">
+            
+            <!-- Third and fourth columns have a green background -->
+            <col span="2" style="background-color:green">
+        </colgroup>
+
+        <!-- Table title displayed above the table -->
+        <caption>students marks</caption>
+
+        <!-- Table header section -->
+        <thead>
+            <tr>
+                <th>s no</th>       <!-- Serial number -->
+                <th>name</th>       <!-- Student name -->
+                <th>marks</th>      <!-- Marks obtained -->
+                <th>total</th>      <!-- Total marks -->
+            </tr>
+        </thead>
+
+        <!-- Table body section (main data) -->
+        <tbody>
+            <tr>
+                <td>01</td>         <!-- First student's serial number -->
+                <td>shivam</td>     <!-- First student's name -->
+                <td>92</td>         <!-- Marks obtained by Shivam -->
+                
+                <!-- Total marks cell for Shivam and Aman combined using rowspan -->
+                <td rowspan="2">90</td>
+            </tr>
+            <tr>
+                <td>02</td>         <!-- Second student's serial number -->
+                <td>aman</td>       <!-- Second student's name -->
+                <td>95</td>         <!-- Marks obtained by Aman -->
+                <!-- No <td> for total because it's already spanned from above -->
+            </tr>
+        </tbody>
+
+        <!-- Table footer section -->
+        <tfoot>
+            <tr>
+                <!-- First two columns merged using colspan -->
+                <td colspan="2">total</td> 
+                <td>187</td>        <!-- Combined marks (92 + 95) -->
+                <td>179</td>        <!-- Sum of some other totals (example value) -->
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+</html>
