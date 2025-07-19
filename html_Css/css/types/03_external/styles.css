@@ -1,0 +1,20 @@
+body {
+    background-color: #e0ffff;
+    font-family: Verdana, sans-serif;
+}
+
+h1 {
+    color: darkgreen;
+    text-align: center;
+}
+
+p {
+    color: #555;
+    font-size: 18px;
+    text-align: justify;
+}
+
+.highlight {
+    background-color: lightyellow;
+    font-weight: bold;
+}
