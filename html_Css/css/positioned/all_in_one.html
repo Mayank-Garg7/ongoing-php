@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position Property Interactive Tutorial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .position-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .position-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .position-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .demo-container {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background: #f8f9fa;
+            margin: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .controls {
+            background: #333;
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-group label {
+            color: white;
+            font-weight: bold;
+            min-width: 60px;
+        }
+
+        .control-group input, .control-group select {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .demo-area {
+            height: 300px;
+            position: relative;
+            overflow: auto;
+            background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
+                        linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
+                        linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+
+        .demo-element {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            border: 3px solid #fff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: move;
+        }
+
+        .parent-element {
+            width: 200px;
+            height: 150px;
+            background: rgba(102, 126, 234, 0.3);
+            border: 2px dashed #667eea;
+            border-radius: 8px;
+            margin: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .scroll-content {
+            height: 600px;
+            background: linear-gradient(to bottom, #ffeaa7, #fab1a0, #fd79a8);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        .code-display {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .highlight {
+            background: #667eea;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .reset-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background: #ee5a52;
+        }
+
+        .sticky-demo {
+            height: 400px;
+            overflow-y: auto;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .sticky-header {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .content-section {
+            padding: 20px;
+            height: 200px;
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CSS Position Property Interactive Tutorial</h1>
+            <p>Learn CSS positioning with hands-on examples and live demonstrations</p>
+        </div>
+
+        <!-- Static Position -->
+        <div class="position-card">
+            <h2 class="position-title">position: static</h2>
+            <p class="description">
+                The default position value. Elements flow naturally in the document. 
+                Top, right, bottom, left properties have no effect.
+            </p>
+            <div class="demo-container">
+                <div class="demo-area">
+                    <div style="padding: 20px;">
+                        <div style="background: #74b9ff; padding: 15px; margin: 10px; border-radius: 5px;">First Element</div>
+                        <div class="demo-element" style="position: static; margin: 10px;">STATIC</div>
+                        <div style="background: #00b894; padding: 15px; margin: 10px; border-radius: 5px;">Third Element</div>
+                    </div>
+                </div>
+            </div>
+            <div class="code-display">
+.element {<br>
+&nbsp;&nbsp;<span class="highlight">position: static;</span><br>
+&nbsp;&nbsp;/* top, right, bottom, left have no effect */<br>
+}
+            </div>
+        </div>
+
+        <!-- Relative Position -->
+        <div class="position-card">
+            <h2 class="position-title">position: relative</h2>
+            <p class="description">
+                Positioned relative to its normal position. The element still occupies its original space.
+            </p>
+            <div class="demo-container">
+                <div class="controls">
+                    <div class="control-group">
+                        <label>Top:</label>
+                        <input type="range" id="relativeTop" min="-50" max="50" value="0">
+                        <span id="relativeTopValue">0px</span>
+                    </div>
+                    <div class="control-group">
+                        <label>Left:</label>
+                        <input type="range" id="relativeLeft" min="-50" max="50" value="0">
+                        <span id="relativeLeftValue">0px</span>
+                    </div>
+                    <button class="reset-btn" onclick="resetRelative()">Reset</button>
+                </div>
+                <div class="demo-area">
+                    <div style="padding: 20px;">
+                        <div style="background: #74b9ff; padding: 15px; margin: 10px; border-radius: 5px;">First Element</div>
+                        <div class="demo-element" id="relativeElement" style="position: relative; margin: 10px;">RELATIVE</div>
+                        <div style="background: #00b894; padding: 15px; margin: 10px; border-radius: 5px;">Third Element (notice the gap)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="code-display" id="relativeCode">
+.element {<br>
+&nbsp;&nbsp;<span class="highlight">position: relative;</span><br>
+&nbsp;&nbsp;top: <span id="relativeTopCode">0px</span>;<br>
+&nbsp;&nbsp;left: <span id="relativeLeftCode">0px</span>;<br>
+}
+            </div>
+        </div>
+
+        <!-- Absolute Position -->
+        <div class="position-card">
+            <h2 class="position-title">position: absolute</h2>
+            <p class="description">
+                Positioned relative to the nearest positioned ancestor (or body if none). 
+                Removed from normal document flow.
+            </p>
+            <div class="demo-container">
+                <div class="controls">
+                    <div class="control-group">
+                        <label>Top:</label>
+                        <input type="range" id="absoluteTop" min="0" max="200" value="20">
+                        <span id="absoluteTopValue">20px</span>
+                    </div>
+                    <div class="control-group">
+                        <label>Right:</label>
+                        <input type="range" id="absoluteRight" min="0" max="200" value="20">
+                        <span id="absoluteRightValue">20px</span>
+                    </div>
+                    <button class="reset-btn" onclick="resetAbsolute()">Reset</button>
+                </div>
+                <div class="demo-area">
+                    <div class="parent-element">
+                        Positioned Parent
+                        <div class="demo-element" id="absoluteElement" style="position: absolute; top: 20px; right: 20px;">ABSOLUTE</div>
+                    </div>
+                    <div style="background: #00b894; padding: 15px; margin: 10px; border-radius: 5px;">This element flows normally</div>
+                </div>
+            </div>
+            <div class="code-display" id="absoluteCode">
+.parent { position: relative; }<br>
+.element {<br>
+&nbsp;&nbsp;<span class="highlight">position: absolute;</span><br>
+&nbsp;&nbsp;top: <span id="absoluteTopCode">20px</span>;<br>
+&nbsp;&nbsp;right: <span id="absoluteRightCode">20px</span>;<br>
+}
+            </div>
+        </div>
+
+        <!-- Fixed Position -->
+        <div class="position-card">
+            <h2 class="position-title">position: fixed</h2>
+            <p class="description">
+                Positioned relative to the viewport. Stays in place when scrolling.
+            </p>
+            <div class="demo-container">
+                <div class="controls">
+                    <div class="control-group">
+                        <label>Position:</label>
+                        <select id="fixedPosition" onchange="updateFixed()">
+                            <option value="top-right">Top Right</option>
+                            <option value="top-left">Top Left</option>
+                            <option value="bottom-right">Bottom Right</option>
+                            <option value="bottom-left">Bottom Left</option>
+                            <option value="center">Center</option>
+                        </select>
+                    </div>
+                    <button class="reset-btn" onclick="resetFixed()">Reset</button>
+                </div>
+                <div class="demo-area">
+                    <div class="scroll-content">
+                        <h3>Scroll this area to see the fixed element in action!</h3>
+                        <div class="demo-element" id="fixedElement" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">FIXED</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <br><br>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <br><br>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <br><br>
+                        <p>Notice how the FIXED element stays in the same position relative to your screen, not the scrollable content!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="code-display" id="fixedCode">
+.element {<br>
+&nbsp;&nbsp;<span class="highlight">position: fixed;</span><br>
+&nbsp;&nbsp;top: <span id="fixedTopCode">10px</span>;<br>
+&nbsp;&nbsp;right: <span id="fixedRightCode">10px</span>;<br>
+&nbsp;&nbsp;z-index: 1000;<br>
+}
+            </div>
+        </div>
+
+        <!-- Sticky Position -->
+        <div class="position-card">
+            <h2 class="position-title">position: sticky</h2>
+            <p class="description">
+                A hybrid of relative and fixed. Element is relative until it reaches a threshold, then becomes fixed.
+            </p>
+            <div class="demo-container">
+                <div class="sticky-demo">
+                    <div class="content-section">
+                        <h3>Section 1</h3>
+                        <p>Scroll down to see the sticky header in action!</p>
+                    </div>
+                    <div class="sticky-header">I'm Sticky! I'll stick to the top when you scroll.</div>
+                    <div class="content-section">
+                        <h3>Section 2</h3>
+                        <p>The sticky element behaves like relative positioning until you scroll past it.</p>
+                    </div>
+                    <div class="content-section">
+                        <h3>Section 3</h3>
+                        <p>Then it becomes fixed to the specified position (top: 0 in this case).</p>
+                    </div>
+                    <div class="content-section">
+                        <h3>Section 4</h3>
+                        <p>Keep scrolling to see it in action!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="code-display">
+.sticky-element {<br>
+&nbsp;&nbsp;<span class="highlight">position: sticky;</span><br>
+&nbsp;&nbsp;top: 0;<br>
+&nbsp;&nbsp;z-index: 10;<br>
+&nbsp;&nbsp;/* Sticks when reaching top: 0 */<br>
+}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Relative positioning controls
+        const relativeTop = document.getElementById('relativeTop');
+        const relativeLeft = document.getElementById('relativeLeft');
+        const relativeElement = document.getElementById('relativeElement');
+        const relativeTopValue = document.getElementById('relativeTopValue');
+        const relativeLeftValue = document.getElementById('relativeLeftValue');
+        const relativeTopCode = document.getElementById('relativeTopCode');
+        const relativeLeftCode = document.getElementById('relativeLeftCode');
+
+        relativeTop.addEventListener('input', function() {
+            const value = this.value + 'px';
+            relativeElement.style.top = value;
+            relativeTopValue.textContent = value;
+            relativeTopCode.textContent = value;
+        });
+
+        relativeLeft.addEventListener('input', function() {
+            const value = this.value + 'px';
+            relativeElement.style.left = value;
+            relativeLeftValue.textContent = value;
+            relativeLeftCode.textContent = value;
+        });
+
+        function resetRelative() {
+            relativeTop.value = 0;
+            relativeLeft.value = 0;
+            relativeElement.style.top = '0px';
+            relativeElement.style.left = '0px';
+            relativeTopValue.textContent = '0px';
+            relativeLeftValue.textContent = '0px';
+            relativeTopCode.textContent = '0px';
+            relativeLeftCode.textContent = '0px';
+        }
+
+        // Absolute positioning controls
+        const absoluteTop = document.getElementById('absoluteTop');
+        const absoluteRight = document.getElementById('absoluteRight');
+        const absoluteElement = document.getElementById('absoluteElement');
+        const absoluteTopValue = document.getElementById('absoluteTopValue');
+        const absoluteRightValue = document.getElementById('absoluteRightValue');
+        const absoluteTopCode = document.getElementById('absoluteTopCode');
+        const absoluteRightCode = document.getElementById('absoluteRightCode');
+
+        absoluteTop.addEventListener('input', function() {
+            const value = this.value + 'px';
+            absoluteElement.style.top = value;
+            absoluteTopValue.textContent = value;
+            absoluteTopCode.textContent = value;
+        });
+
+        absoluteRight.addEventListener('input', function() {
+            const value = this.value + 'px';
+            absoluteElement.style.right = value;
+            absoluteRightValue.textContent = value;
+            absoluteRightCode.textContent = value;
+        });
+
+        function resetAbsolute() {
+            absoluteTop.value = 20;
+            absoluteRight.value = 20;
+            absoluteElement.style.top = '20px';
+            absoluteElement.style.right = '20px';
+            absoluteTopValue.textContent = '20px';
+            absoluteRightValue.textContent = '20px';
+            absoluteTopCode.textContent = '20px';
+            absoluteRightCode.textContent = '20px';
+        }
+
+        // Fixed positioning controls
+        const fixedElement = document.getElementById('fixedElement');
+        const fixedTopCode = document.getElementById('fixedTopCode');
+        const fixedRightCode = document.getElementById('fixedRightCode');
+
+        function updateFixed() {
+            const position = document.getElementById('fixedPosition').value;
+            
+            // Reset all positioning
+            fixedElement.style.top = 'auto';
+            fixedElement.style.right = 'auto';
+            fixedElement.style.bottom = 'auto';
+            fixedElement.style.left = 'auto';
+            fixedElement.style.transform = 'none';
+
+            switch(position) {
+                case 'top-right':
+                    fixedElement.style.top = '10px';
+                    fixedElement.style.right = '10px';
+                    fixedTopCode.textContent = '10px';
+                    fixedRightCode.textContent = '10px';
+                    break;
+                case 'top-left':
+                    fixedElement.style.top = '10px';
+                    fixedElement.style.left = '10px';
+                    fixedTopCode.textContent = '10px';
+                    fixedRightCode.textContent = 'auto';
+                    break;
+                case 'bottom-right':
+                    fixedElement.style.bottom = '10px';
+                    fixedElement.style.right = '10px';
+                    fixedTopCode.textContent = 'auto';
+                    fixedRightCode.textContent = '10px';
+                    break;
+                case 'bottom-left':
+                    fixedElement.style.bottom = '10px';
+                    fixedElement.style.left = '10px';
+                    fixedTopCode.textContent = 'auto';
+                    fixedRightCode.textContent = 'auto';
+                    break;
+                case 'center':
+                    fixedElement.style.top = '50%';
+                    fixedElement.style.left = '50%';
+                    fixedElement.style.transform = 'translate(-50%, -50%)';
+                    fixedTopCode.textContent = '50%';
+                    fixedRightCode.textContent = 'auto';
+                    break;
+            }
+        }
+
+        function resetFixed() {
+            document.getElementById('fixedPosition').value = 'top-right';
+            updateFixed();
+        }
+
+        // Initialize
+        updateFixed();
+    </script>
+</body>
+</html>
