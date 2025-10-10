@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let array1 = new Array(10, 20, 30, 40, 50); 
+        document.write("<br>Original Array: ", array1);
+        
+        let arrayString = array1.toString(); 
+        document.write("<br>Array as a string: ", arrayString);
+
+        let array2 = [60, 70, 80];
+        let mergedArray = array1.concat(array2); 
+        document.write("<br>Concatenated Array: ", mergedArray);
+
+        let filledArray = array1.fill(100, 2, 4); 
+        document.write("<br>Array after fill() method: ", filledArray);
+
+        let reversedArray = array1.reverse(); 
+        document.write("<br>Reversed Array: ", reversedArray);
+
+        let index = array1.indexOf(100); 
+        document.write("<br>Index of 100: ", index);
+
+        let joinedString = array1.join(' & '); 
+        document.write("<br>Joined Array: ", joinedString);
+
+        let shiftedElement = array1.shift(); 
+        document.write("<br>Shifted Element: ", shiftedElement);
+        document.write("<br>Array after shift(): ", array1);
+
+        array1.unshift(200, 300); 
+        document.write("<br>Array after unshift(): ", array1);
+
+        let slicedArray = array1.slice(2, 5); 
+        document.write("<br>Sliced Array (index 2 to 5): ", slicedArray);
+
+        let sortedArray = array1.sort((a, b) => a - b); 
+        document.write("<br>Sorted Array: ", sortedArray);
+    </script>-
+</body>
+</html
