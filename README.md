@@ -1,7 +1,3 @@
-Click here for[ notes](https://drive.google.com/drive/folders/1IS2cnLY4MjlZCiGBwwwV09YqDKAJwl0u?usp=sharing)
-Soon, I will attach hand notes as well.
-
-
 # 📘 Navigation Methods and Techniques (Simplified Guide with Examples)
 
 Navigation is the way users move between pages or sections in a website or app. Here are some of the **most important and commonly used navigation methods** explained in a very simple way — with real examples.
@@ -131,4 +127,5 @@ Navigation is the way users move between pages or sections in a website or app. 
 ---
 
 📌 Feel free to explore the examples and implement these navigation techniques as per your project needs.
+
 
